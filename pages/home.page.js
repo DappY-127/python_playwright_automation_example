@@ -6,6 +6,8 @@ const headerProductsBttn = '//a[contains(text(), "Products")]'
 const headerCartBttn = '//a[contains(text(), "Cart")]'
 const headerSighnupLoginBttn = '//a[contains(text(), " Signup / Login")]' 
 const headerContactUsBttn = '//a[contains(text(), "Contact us")]'
+const headerLogoutBttn = '//a[contains(text(), " Logout")]'
+const headerDeleteAccBttn = '//a[contains(text(), " Delete Account")]'
 const subscriptionEmailField = '#susbscribe_email'
 const subscriptionBttn = '#subscribe'
 
@@ -41,6 +43,12 @@ class HomePage extends Page {
     async getSubscriptionBttn() {
         return await super.getElement(subscriptionBttn);
     }
+    async getHeaderLogoutBttn() {
+        return await super.getElement(headerLogoutBttn);
+    }
+    async getHeaderDeleteAccBttn() {
+        return await super.getElement(headerDeleteAccBttn);
+    }
     // Elements click's
     async clickHomePageLogoBttn() {
         return await super.clickElement(homePageLogoBttn);
@@ -66,8 +74,12 @@ class HomePage extends Page {
     async clickSubscriptionBttn() {
         return await super.clickElement(subscriptionBttn);
     }
-
-
+    async clickHeaderLogoutBttn() {
+        return await super.clickElement(headerLogoutBttn);
+    }
+    async clickHeaderDeleteAccBttn() {
+        return await super.clickElement(headerDeleteAccBttn);
+    }
 }
 
 module.exports = {HomePage};

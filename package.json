@@ -1,0 +1,25 @@
+{
+  "name": "python_playwright_automation_example",
+  "version": "1.0.0",
+  "description": "",
+  "main": "index.js",
+  "scripts": {
+    "test": "npx playwright test",
+    "html-report": "npx playwright show-report"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/DappY-127/python_playwright_automation_example.git"
+  },
+  "keywords": [],
+  "author": "",
+  "license": "ISC",
+  "bugs": {
+    "url": "https://github.com/DappY-127/python_playwright_automation_example/issues"
+  },
+  "homepage": "https://github.com/DappY-127/python_playwright_automation_example#readme",
+  "devDependencies": {
+    "@playwright/test": "^1.40.0",
+    "@types/node": "^20.9.4"
+  }
+}

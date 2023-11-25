@@ -8,7 +8,7 @@ const locators = {
     emailField: '#email',
     passwordField: '#password',
     birthDaySelect: '#days',
-    birthMontSelect: '#months',
+    birthMonthSelect: '#months',
     birthYearSelect: '#years',
     newsletterCheckbox: '#newsletter',
     specialoffersCheckbox: '#optin',
@@ -34,7 +34,7 @@ class SignupPage extends Page {
     async fillAccountInformation() {
         // Fill Account Information fields based on the provided object
         await this.page.fill(this.locators.nameField, process.env.VALID_NAME);
-        await this.page.fill(this.locators.emailField, process.env.VALID_EMAIL);
+        // await this.page.fill(this.locators.emailField, process.env.VALID_EMAIL);
         await this.page.fill(this.locators.passwordField, process.env.VALID_PASSWORD);
     }
 
@@ -54,6 +54,31 @@ class SignupPage extends Page {
 
     async clickCreateAccountButton() {
         await this.clickElement(this.locators.createAccBttn);
+    }
+
+    async selectNewsletterCheckbox() {
+        await this.checkElement(this.locators.newsletterCheckbox);
+    }
+    async selectSpecialoffersCheckbox() {
+        await this.checkElement(this.locators.specialoffersCheckbox);
+    }
+    async selectMrRadioBttn() {
+        await this.clickElement(this.locators.mrRadioBttn);
+    }
+    async selectMrsRadioBttn() {
+        await this.clickElement(this.locators.mrsRadioBttn);
+    }
+    async pickDayOfBirth() {
+        await this.page.selectOption(this.locators.birthDaySelect, process.env.VALID_DAY);
+    }
+    async pickMonthOfBirth() {
+        await this.page.selectOption(this.locators.birthMonthSelect, process.env.VALID_MONTH);
+    }
+    async pickYearOfBirth() {
+        await this.page.selectOption(this.locators.birthYearSelect, process.env.VALID_YEAR);
+    }
+    async pickCountry() {
+        await this.page.selectOption(this.locators.countrySelect, process.env.VALID_COUNTRY);
     }
 
 }

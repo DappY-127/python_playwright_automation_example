@@ -51,6 +51,14 @@ class SignupLoginPage extends Page {
     async clickSignupBttn() {
         return await super.clickElement(signupBttn);
     }
+
+    // Test Methods
+    async enterNameAndEmail() {
+        const nameField = await this.getSignupNameField();
+        const emailField = await this.getSignupEmailAddressField();
+        await nameField.fill(process.env.SIGNUP_NAME);
+        await emailField.fill(process.env.SIGNUP_EMAIL);
+    }
 }
 
 module.exports = {SignupLoginPage};

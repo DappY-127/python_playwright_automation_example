@@ -20,7 +20,7 @@ class AccountDeletionPage extends Page {
         return await super.clickElement(continueBttn)
     }
     async isAccountDeletedVisible() {
-        const isVisible = await this.isElementVisible(this.accCreatedMssg);
+        const isVisible = await this.page.isVisible(this.accDeletedMssg);
         return isVisible;
     }
 }

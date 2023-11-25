@@ -20,7 +20,7 @@ class AccountCreationPage extends Page {
         return await super.clickElement(continueBttn)
     }
     async isAccountCreatedVisible() {
-        const isVisible = await this.isElementVisible(this.accCreatedMssg);
+        const isVisible = await this.page.isVisible(this.accCreatedMssg);
         return isVisible;
     }
 }

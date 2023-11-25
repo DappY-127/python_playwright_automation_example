@@ -18,6 +18,10 @@ class Page {
     async clickElement(element) {
         await (await this.getElement(element)).click();
     }
+
+    async checkElement(element) {
+        await (await this.getElement(element)).check();
+    }
   }
   
   module.exports = {Page};

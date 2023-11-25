@@ -7,6 +7,7 @@ class AccountCreationPage extends Page {
     constructor(page) {
         super(page)
         this.page = page
+        this.accCreatedMssg = accCreatedMssg;
     }
 
     async getAccCreatedMssg() {
@@ -17,6 +18,10 @@ class AccountCreationPage extends Page {
     }
     async clickContinueBttn() {
         return await super.clickElement(continueBttn)
+    }
+    async isAccountCreatedVisible() {
+        const isVisible = await this.isElementVisible(this.accCreatedMssg);
+        return isVisible;
     }
 }
 

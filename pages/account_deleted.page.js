@@ -7,6 +7,7 @@ class AccountDeletionPage extends Page {
     constructor(page) {
         super(page)
         this.page = page
+        this.accDeletedMssg = accDeletedMssg;
     }
 
     async getAccDeletedMssg() {
@@ -17,6 +18,10 @@ class AccountDeletionPage extends Page {
     }
     async clickContinueBttn() {
         return await super.clickElement(continueBttn)
+    }
+    async isAccountDeletedVisible() {
+        const isVisible = await this.isElementVisible(this.accCreatedMssg);
+        return isVisible;
     }
 }
 

@@ -32,7 +32,7 @@ test.describe("User Registration and Account Deletion", () => {
     await signupLoginPage.enterNameAndEmail();
     // Add assertions to verify name and email entry
 
-    await signupLoginPage.clickSignupButton();
+    await signupLoginPage.clickSignupBttn();
     // Add assertions to verify 'ENTER ACCOUNT INFORMATION' section visibility
 
     await signupPage.fillAccountInformation();
@@ -41,15 +41,21 @@ test.describe("User Registration and Account Deletion", () => {
     await signupPage.fillAddressInformation();
     // Add assertions for successful account details submission
 
-    await signupPage.clickCreateAccountButton();
-    // Add assertions to verify 'ACCOUNT CREATED!' message visibility
+    await signupPage.selectMrRadioBttn();
+    await signupPage.selectNewsletterCheckbox();
+    await signupPage.selectSpecialoffersCheckbox();
+    await signupPage.pickDayOfBirth();
+    await signupPage.pickMonthOfBirth();
+    await signupPage.pickYearOfBirth();
+    await signupPage.pickCountry();
 
+    await signupPage.clickCreateAccountButton();
+    expect(await accountCreationPage.isAccountCreatedVisible()).toBeTruthy();
     await accountCreationPage.clickContinueBttn();
     // Add assertions to verify successful login message
 
     await homePage.clickHeaderDeleteAccBttn();
-    // Add assertions to verify 'ACCOUNT DELETED!' message visibility
-
+    expect(await accountDeletionPage.isAccountDeletedVisible()).toBeTruthy();
     await accountDeletionPage.clickContinueBttn();
     // Add assertions to verify successful deletion and navigation after account deletion
   });

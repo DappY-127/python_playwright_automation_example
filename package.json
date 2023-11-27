@@ -20,6 +20,7 @@
   "homepage": "https://github.com/DappY-127/python_playwright_automation_example#readme",
   "devDependencies": {
     "@playwright/test": "^1.40.0",
-    "@types/node": "^20.9.4"
+    "@types/node": "^20.9.4",
+    "dotenv": "^16.3.1"
   }
 }

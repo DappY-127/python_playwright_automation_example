@@ -10,6 +10,7 @@ const headerLogoutBttn = '//a[contains(text(), " Logout")]'
 const headerDeleteAccBttn = '//a[contains(text(), " Delete Account")]'
 const subscriptionEmailField = '#susbscribe_email'
 const subscriptionBttn = '#subscribe'
+const userStatus = '//a[contains(text(), "Logged in as")]'
 
 class HomePage extends Page {
     constructor(page) {

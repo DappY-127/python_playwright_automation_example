@@ -36,6 +36,11 @@ class SignupPage extends Page {
         await this.page.fill(this.locators.nameField, process.env.VALID_NAME);
         // await this.page.fill(this.locators.emailField, process.env.VALID_EMAIL);
         await this.page.fill(this.locators.passwordField, process.env.VALID_PASSWORD);
+        await this.pickDayOfBirth();
+        await this.pickMonthOfBirth();
+        await this.pickYearOfBirth();
+        await this.selectNewsletterCheckbox();
+        await this.selectSpecialoffersCheckbox();
     }
 
     async fillAddressInformation() {
@@ -49,6 +54,7 @@ class SignupPage extends Page {
         await this.page.fill(this.locators.cityField, process.env.VALID_CITY);
         await this.page.fill(this.locators.zipField, process.env.VALID_ZIP);
         await this.page.fill(this.locators.mobileNumberField, process.env.VALID_MOBILE_NUMBER);
+        await this.pickCountry();
  
     }
 

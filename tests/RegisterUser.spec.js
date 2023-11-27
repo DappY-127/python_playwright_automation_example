@@ -24,39 +24,26 @@ test.describe("User Registration and Account Deletion", () => {
     const accountDeletionPage = new AccountDeletionPage(page);
 
     await homePage.openUrl(process.env.URL);
-    // Add assertions to verify home page visibility
-
+    let homePageTitle = await page.title();
+    expect(homePageTitle).toContain('Automation Exercise');
     await homePage.clickHeaderSighnupLoginBttn();
-    // Add assertions to verify 'New User Signup!' section visibility
-
+    expect(await signupLoginPage.isSignupInfoLabelVisible()).toBeTruthy();
     await signupLoginPage.enterNameAndEmail();
-    // Add assertions to verify name and email entry
-
     await signupLoginPage.clickSignupBttn();
-    // Add assertions to verify 'ENTER ACCOUNT INFORMATION' section visibility
-
     await signupPage.fillAccountInformation();
-    // Add assertions for successful account details submission
-
-    await signupPage.fillAddressInformation();
-    // Add assertions for successful account details submission
-
     await signupPage.selectMrRadioBttn();
-    await signupPage.selectNewsletterCheckbox();
-    await signupPage.selectSpecialoffersCheckbox();
-    await signupPage.pickDayOfBirth();
-    await signupPage.pickMonthOfBirth();
-    await signupPage.pickYearOfBirth();
-    await signupPage.pickCountry();
-
+    await signupPage.fillAddressInformation();
     await signupPage.clickCreateAccountButton();
     expect(await accountCreationPage.isAccountCreatedVisible()).toBeTruthy();
     await accountCreationPage.clickContinueBttn();
-    // Add assertions to verify successful login message
-
+    expect(await homePage.isUserStatusVisible()).toBeTruthy();
+    expect(await homePage.isUserStatusCorrect()).toBeTruthy();
     await homePage.clickHeaderDeleteAccBttn();
     expect(await accountDeletionPage.isAccountDeletedVisible()).toBeTruthy();
     await accountDeletionPage.clickContinueBttn();
-    // Add assertions to verify successful deletion and navigation after account deletion
+    expect(await homePage.isHeaderDeleteAccBttnVisible()).toBeFalsy();
+    expect(await homePage.isHeaderLogoutBttnVisible()).toBeFalsy();
+    homePageTitle = await page.title();
+    expect(homePageTitle).toContain('Automation Exercise');
   });
 });

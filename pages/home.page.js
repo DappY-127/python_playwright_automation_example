@@ -50,6 +50,9 @@ class HomePage extends Page {
     async getHeaderDeleteAccBttn() {
         return await super.getElement(headerDeleteAccBttn);
     }
+    async getUserStatus() {
+        return await super.getElement(userStatus);
+    }
     // Elements click's
     async clickHomePageLogoBttn() {
         return await super.clickElement(homePageLogoBttn);
@@ -80,6 +83,34 @@ class HomePage extends Page {
     }
     async clickHeaderDeleteAccBttn() {
         return await super.clickElement(headerDeleteAccBttn);
+    }
+    // Test methods
+    async isHeaderLogoutBttnVisible() {
+        const headerLogoutBttn = await this.getHeaderLogoutBttn();
+        const isVisible = await headerLogoutBttn.isVisible();
+        return isVisible;
+    }
+    async isHeaderDeleteAccBttnVisible() {
+        const headerDeleteAccBttn = await this.getHeaderDeleteAccBttn();
+        const isVisible = await headerDeleteAccBttn.isVisible();
+        return isVisible;
+    }
+    async isUserStatusVisible() {
+        const userStatus = await this.getUserStatus();
+        const isVisible = await userStatus.isVisible();
+        return isVisible;
+    }
+    async isUserStatusCorrect() {
+        const userStatusElement = await this.getUserStatus();
+        const userStatusText = await userStatusElement.textContent();
+        const userName = process.env.SIGNUP_NAME;
+        const expectedUserStatus = ' Logged in as ' + userName;
+
+        if (userStatusText === expectedUserStatus) {
+            return true;
+        } else {
+            throw new Error(`User status incorrect. Expected: ${expectedUserStatus}. Actual: ${userStatusText} -----`);
+        }
     }
 }
 

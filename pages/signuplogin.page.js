@@ -3,9 +3,11 @@ const { Page } = require("./page");
 const loginEmailAddressField = '[data-qa="login-email"]'
 const loginPasswordField = '[data-qa="login-password"]'
 const loginBttn = '[data-qa="login-button"]'
+const loginInfoLabel = '.login-form h2'
 const signupNameField = '[data-qa="signup-name"]'
 const signupEmailAddressField = '[data-qa="signup-email"]'
 const signupBttn = '[data-qa="signup-button"]'
+const signupInfoLabel = '.signup-form h2'
 
 class SignupLoginPage extends Page {
     constructor(page) {
@@ -31,6 +33,12 @@ class SignupLoginPage extends Page {
     }
     async getSignupBttn() {
         return await super.getElement(signupBttn);
+    }
+    async getLoginInfoLabel() {
+        return await super.getElement(loginInfoLabel);
+    }
+    async getSignupInfoLabel() {
+        return await super.getElement(signupInfoLabel);
     }
     // Elements click's
     async clickLoginEmailAddressField() {
@@ -58,6 +66,16 @@ class SignupLoginPage extends Page {
         const emailField = await this.getSignupEmailAddressField();
         await nameField.fill(process.env.SIGNUP_NAME);
         await emailField.fill(process.env.SIGNUP_EMAIL);
+    }
+    async isLoginInfoLabelVisible() {
+        const loginInfoLabel = await this.getLoginInfoLabel();
+        const isVisible = await loginInfoLabel.isVisible();
+        return isVisible;
+    }
+    async isSignupInfoLabelVisible() {
+        const signupInfoLabel = await this.getSignupInfoLabel();
+        const isVisible = await signupInfoLabel.isVisible();
+        return isVisible;
     }
 }
 

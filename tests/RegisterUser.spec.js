@@ -7,23 +7,28 @@ const { AccountDeletionPage } = require("../pages/account_deleted.page");
 
 test.describe("User Registration and Account Deletion", () => {
   let page;
+  let homePage;
+  let signupLoginPage;
+  let signupPage;
+  let accountCreationPage;
+  let accountDeletionPage;
 
-  test.beforeAll(async ({ browser }) => {
+  test.beforeEach(async ({ browser }) => {
     page = await browser.newPage();
+    homePage = new HomePage(page);
+    signupLoginPage = new SignupLoginPage(page);
+    signupPage = new SignupPage(page);
+    accountCreationPage = new AccountCreationPage(page);
+    accountDeletionPage = new AccountDeletionPage(page);
   });
 
-  test.afterAll(async () => {
+  test.afterEach(async () => {
     await page.close();
   });
 
   test("User should be able to register, log in, delete the account, and observe appropriate messages", async () => {
-    const homePage = new HomePage(page);
-    const signupLoginPage = new SignupLoginPage(page);
-    const signupPage = new SignupPage(page);
-    const accountCreationPage = new AccountCreationPage(page);
-    const accountDeletionPage = new AccountDeletionPage(page);
-
     await homePage.openUrl(process.env.URL);
+    
     let homePageTitle = await page.title();
     expect(homePageTitle).toContain('Automation Exercise');
     await homePage.clickHeaderSighnupLoginBttn();

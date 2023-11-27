@@ -109,7 +109,7 @@ class HomePage extends Page {
         if (userStatusText === expectedUserStatus) {
             return true;
         } else {
-            throw new Error(`User status incorrect. Expected: ${expectedUserStatus}. Actual: ${userStatusText} -----`);
+            throw new Error(`User status incorrect. Expected: ${expectedUserStatus}. Actual: ${userStatusText}`);
         }
     }
 }

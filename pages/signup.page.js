@@ -34,7 +34,6 @@ class SignupPage extends Page {
     async fillAccountInformation() {
         // Fill Account Information fields based on the provided object
         await this.page.fill(this.locators.nameField, process.env.VALID_NAME);
-        // await this.page.fill(this.locators.emailField, process.env.VALID_EMAIL);
         await this.page.fill(this.locators.passwordField, process.env.VALID_PASSWORD);
         await this.pickDayOfBirth();
         await this.pickMonthOfBirth();

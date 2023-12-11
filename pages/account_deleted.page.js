@@ -10,12 +10,12 @@ class AccountDeletionPage extends Page {
         this.accDeletedMssg = accDeletedMssg;
     }
 
-    async getAccDeletedMssg() {
-        return await super.getElement(accDeletedMssg)
-    }
-    async getContinueBttn() {
-        return await super.getElement(continueBttn)
-    }
+    // async getAccDeletedMssg() {
+    //     return await super.getElement(accDeletedMssg)
+    // }
+    // async getContinueBttn() {
+    //     return await super.getElement(continueBttn)
+    // }
     async clickContinueBttn() {
         return await super.clickElement(continueBttn)
     }

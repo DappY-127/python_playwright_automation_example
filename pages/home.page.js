@@ -19,40 +19,40 @@ class HomePage extends Page {
     }
 
 
-    // Elements getters
-    async getHomePageLogoBttn() {
-        return await super.getElement(homePageLogoBttn);
-    }
-    async getHeaderHomeBttn() {
-        return await super.getElement(headerHomeBttn);
-    }
-    async getHeaderProductsBttn() {
-        return await super.getElement(headerProductsBttn);
-    }
-    async getHeaderCartBttn() {
-        return await super.getElement(headerCartBttn);
-    }
-    async getHeaderSighnupLoginBttn() {
-        return await super.getElement(headerSighnupLoginBttn);
-    }
-    async getHeaderContactUsBttn() {
-        return await super.getElement(headerContactUsBttn);
-    }
-    async getSubscriptionEmailField() {
-        return await super.getElement(subscriptionEmailField);
-    }
-    async getSubscriptionBttn() {
-        return await super.getElement(subscriptionBttn);
-    }
-    async getHeaderLogoutBttn() {
-        return await super.getElement(headerLogoutBttn);
-    }
-    async getHeaderDeleteAccBttn() {
-        return await super.getElement(headerDeleteAccBttn);
-    }
-    async getUserStatus() {
-        return await super.getElement(userStatus);
-    }
+    // // Elements getters
+    // async getHomePageLogoBttn() {
+    //     return await super.getElement(homePageLogoBttn);
+    // }
+    // async getHeaderHomeBttn() {
+    //     return await super.getElement(headerHomeBttn);
+    // }
+    // async getHeaderProductsBttn() {
+    //     return await super.getElement(headerProductsBttn);
+    // }
+    // async getHeaderCartBttn() {
+    //     return await super.getElement(headerCartBttn);
+    // }
+    // async getHeaderSighnupLoginBttn() {
+    //     return await super.getElement(headerSighnupLoginBttn);
+    // }
+    // async getHeaderContactUsBttn() {
+    //     return await super.getElement(headerContactUsBttn);
+    // }
+    // async getSubscriptionEmailField() {
+    //     return await super.getElement(subscriptionEmailField);
+    // }
+    // async getSubscriptionBttn() {
+    //     return await super.getElement(subscriptionBttn);
+    // }
+    // async getHeaderLogoutBttn() {
+    //     return await super.getElement(headerLogoutBttn);
+    // }
+    // async getHeaderDeleteAccBttn() {
+    //     return await super.getElement(headerDeleteAccBttn);
+    // }
+    // async getUserStatus() {
+    //     return await super.getElement(userStatus);
+    // }
     // Elements click's
     async clickHomePageLogoBttn() {
         return await super.clickElement(homePageLogoBttn);
@@ -86,22 +86,26 @@ class HomePage extends Page {
     }
     // Test methods
     async isHeaderLogoutBttnVisible() {
-        const headerLogoutBttn = await this.getHeaderLogoutBttn();
-        const isVisible = await headerLogoutBttn.isVisible();
+        const logoutBttn = await super.getElement(headerLogoutBttn);
+        // const logoutBttn = await this.getHeaderLogoutBttn();
+        const isVisible = await logoutBttn.isVisible();
         return isVisible;
     }
     async isHeaderDeleteAccBttnVisible() {
-        const headerDeleteAccBttn = await this.getHeaderDeleteAccBttn();
-        const isVisible = await headerDeleteAccBttn.isVisible();
+        const deleteAccBttn = await super.getElement(headerDeleteAccBttn);
+        // const deleteAccBttn = await this.getHeaderDeleteAccBttn();
+        const isVisible = await deleteAccBttn.isVisible();
         return isVisible;
     }
     async isUserStatusVisible() {
-        const userStatus = await this.getUserStatus();
-        const isVisible = await userStatus.isVisible();
+        const userStatusElement = await super.getElement(userStatus);
+        // const userStatus = await this.getUserStatus();
+        const isVisible = await userStatusElement.isVisible();
         return isVisible;
     }
     async isUserStatusCorrect() {
-        const userStatusElement = await this.getUserStatus();
+        const userStatusElement = await super.getElement(userStatus);
+        // const userStatusElement = await this.getUserStatus();
         const userStatusText = await userStatusElement.textContent();
         const userName = process.env.SIGNUP_NAME;
         const expectedUserStatus = ' Logged in as ' + userName;

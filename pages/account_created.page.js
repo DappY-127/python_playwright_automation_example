@@ -8,14 +8,15 @@ class AccountCreationPage extends Page {
         super(page)
         this.page = page
         this.accCreatedMssg = accCreatedMssg;
+        this.continueBttn = continueBttn;
     }
 
-    async getAccCreatedMssg() {
-        return await super.getElement(accCreatedMssg)
-    }
-    async getContinueBttn() {
-        return await super.getElement(continueBttn)
-    }
+    // async getAccCreatedMssg() {
+    //     return await super.getElement(accCreatedMssg)
+    // }
+    // async getContinueBttn() {
+    //     return await super.getElement(continueBttn)
+    // }
     async clickContinueBttn() {
         return await super.clickElement(continueBttn)
     }

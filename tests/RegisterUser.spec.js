@@ -90,4 +90,8 @@ test.describe("User Registration and Account Deletion", () => {
     expect(homePageTitle).toContain('Automation Exercise');
   });
 
+  // test("Register User with existing email", async () => {
+
+  // })
+
 });

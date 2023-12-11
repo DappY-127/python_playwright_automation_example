@@ -14,6 +14,7 @@ class SignupLoginPage extends Page {
     constructor(page) {
         super(page)
         this.page = page
+        this.generatedEmail = '';
     }
     
     // Elements click's
@@ -37,17 +38,34 @@ class SignupLoginPage extends Page {
     }
 
     // Test Methods
+    async generateRandomEmail() {
+        const randomNumber = Math.floor(Math.random() * 10000); // Generates a random 4-digit number
+        return `testmail${randomNumber}@mail.com`;
+      }
+
     async enterNameAndEmail() {
+        if (!this.generatedEmail) {
+            this.generatedEmail = await this.generateRandomEmail(); // Generate email if not already generated
+        }
+
+        const generatedEmail = await this.generateRandomEmail();
         const nameField = await super.getElement(signupNameField);
         const emailField = await this.getElement(signupEmailAddressField);
         await nameField.fill(process.env.SIGNUP_NAME);
-        await emailField.fill(process.env.SIGNUP_EMAIL);
+        await emailField.fill(this.generatedEmail);
+        // await emailField.fill(process.env.SIGNUP_EMAIL);
     }
 
     async enterEmailAndPassword() {
+        if (!this.generatedEmail) {
+            this.generatedEmail = await this.generateRandomEmail(); // Generate email if not already generated
+        }
+
+        const generatedEmail = await this.generateRandomEmail();
         const emailField = await super.getElement(loginEmailAddressField);
         const passField = await super.getElement(loginPasswordField);
-        await emailField.fill(process.env.VALID_EMAIL);
+        await emailField.fill(this.generatedEmail);
+        // await emailField.fill(process.env.VALID_EMAIL);
         await passField.fill(process.env.VALID_PASSWORD);
     }
 

@@ -15,31 +15,6 @@ class SignupLoginPage extends Page {
         this.page = page
     }
     
-    // Elements getters
-    async getLoginEmailAddressField() {
-        return await super.getElement(loginEmailAddressField);
-    }
-    async getLoginPasswordField() {
-        return await super.getElement(loginPasswordField);
-    }
-    async getLoginBttn() {
-        return await super.getElement(loginBttn);
-    }
-    async getSignupNameField() {
-        return await super.getElement(signupNameField);
-    }
-    async getSignupEmailAddressField() {
-        return await super.getElement(signupEmailAddressField);
-    }
-    async getSignupBttn() {
-        return await super.getElement(signupBttn);
-    }
-    async getLoginInfoLabel() {
-        return await super.getElement(loginInfoLabel);
-    }
-    async getSignupInfoLabel() {
-        return await super.getElement(signupInfoLabel);
-    }
     // Elements click's
     async clickLoginEmailAddressField() {
         return await super.clickElement(loginEmailAddressField);
@@ -62,19 +37,19 @@ class SignupLoginPage extends Page {
 
     // Test Methods
     async enterNameAndEmail() {
-        const nameField = await this.getSignupNameField();
-        const emailField = await this.getSignupEmailAddressField();
+        const nameField = await super.getElement(signupNameField);
+        const emailField = await this.getElement(signupEmailAddressField);
         await nameField.fill(process.env.SIGNUP_NAME);
         await emailField.fill(process.env.SIGNUP_EMAIL);
     }
     async isLoginInfoLabelVisible() {
-        const loginInfoLabel = await this.getLoginInfoLabel();
-        const isVisible = await loginInfoLabel.isVisible();
+        const loginLabel = await super.getElement(loginInfoLabel);
+        const isVisible = await loginLabel.isVisible();
         return isVisible;
     }
     async isSignupInfoLabelVisible() {
-        const signupInfoLabel = await this.getSignupInfoLabel();
-        const isVisible = await signupInfoLabel.isVisible();
+        const signupLabel = await super.getElement(signupInfoLabel);
+        const isVisible = await signupLabel.isVisible();
         return isVisible;
     }
 }

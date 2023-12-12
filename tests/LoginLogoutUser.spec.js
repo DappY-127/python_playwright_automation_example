@@ -80,6 +80,59 @@ test.describe("User Login", () => {
 
 });
 
-// test.describe("User Logout", () => {
+test.describe("User Logout", () => {
+    let page;
+    let homePage;
+    let signupLoginPage;
+    let signupPage;
+    let accountCreationPage;
+    let accountDeletionPage;
 
-// });
+    test.beforeEach(async ({ browser }) => {
+        page = await browser.newPage();
+        homePage = new HomePage(page);
+        signupLoginPage = new SignupLoginPage(page);
+        signupPage = new SignupPage(page);
+        accountCreationPage = new AccountCreationPage(page);
+        accountDeletionPage = new AccountDeletionPage(page);
+        await homePage.openUrl(process.env.URL);
+    });
+
+    test.afterEach(async () => {
+        // test account deletion after test run 
+        await signupLoginPage.enterEmailAndPassword();
+        await signupLoginPage.clickLoginBttn();
+        expect(await homePage.isUserStatusVisible()).toBeTruthy();
+        expect(await homePage.isUserStatusCorrect()).toBeTruthy();
+
+        await homePage.clickHeaderDeleteAccBttn();
+        expect(await accountDeletionPage.isAccountDeletedVisible()).toBeTruthy();
+
+        await accountDeletionPage.clickContinueBttn();
+        expect(await homePage.isHeaderDeleteAccBttnVisible()).toBeFalsy();
+        expect(await homePage.isHeaderLogoutBttnVisible()).toBeFalsy();
+
+        await page.close();
+    });
+
+    test("User Logout", async () => {
+        await userCreation(homePage, signupLoginPage, signupPage, accountCreationPage);
+
+        await homePage.openUrl(process.env.URL);
+        let homePageTitle = await page.title();
+        expect(homePageTitle).toContain('Automation Exercise');
+
+        await homePage.clickHeaderSighnupLoginBttn();
+        expect(await signupLoginPage.isLoginInfoLabelVisible()).toBeTruthy();
+    
+        await signupLoginPage.enterEmailAndPassword();
+        await signupLoginPage.clickLoginBttn();
+        expect(await homePage.isUserStatusVisible()).toBeTruthy();
+        expect(await homePage.isUserStatusCorrect()).toBeTruthy();
+
+        await homePage.clickHeaderLogoutBttn();
+        expect(await signupLoginPage.isLoginInfoLabelVisible()).toBeTruthy();
+        // need additional assertion to Verify that user is navigated to login page
+    });
+
+});

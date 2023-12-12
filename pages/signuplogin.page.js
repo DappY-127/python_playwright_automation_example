@@ -9,6 +9,7 @@ const signupEmailAddressField = '[data-qa="signup-email"]'
 const signupBttn = '[data-qa="signup-button"]'
 const signupInfoLabel = '.signup-form h2'
 const invalidMailPassMsg = '//*[text()="Your email or password is incorrect!"]'
+const emailExistErrMsg = '//*[text()="Email Address already exist!"]'
 
 class SignupLoginPage extends Page {
     constructor(page) {
@@ -92,7 +93,13 @@ class SignupLoginPage extends Page {
         const errorLabel = await super.getElement(invalidMailPassMsg);
         const isVisible = await errorLabel.isVisible();
         return isVisible;
-      }
+    }
+
+    async isMailAlredyExistErrorMsgVisible() {
+        const errorLabel = await super.getElement(emailExistErrMsg);
+        const isVisible = await errorLabel.isVisible();
+        return isVisible;
+    }
 }
 
 module.exports = {SignupLoginPage};
